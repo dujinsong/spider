@@ -25,8 +25,6 @@ function doScan(app, includePath, excludePath) {
  * @param app 应用上下文
  * @param includePath 需要扫描的路径
  * @param excludePath 需要排除的路径
- * @param routeJs 已扫描的路由文件
- * @returns {*} 扫描到的路由文件
  */
 function scanRoute(app, includePath, excludePath) {
 
@@ -38,10 +36,6 @@ function scanRoute(app, includePath, excludePath) {
         if (modularJsStatus.isFile()) {
             if (path.extname(modularJsFullPath) !== '.js') {
                 return true;
-            }
-
-            if (app.get('env') === 'development') {
-                console.log('扫描路由文件：%s', modularJsFullPath);
             }
 
             var modularJsRoute = require(modularJsFullPath);

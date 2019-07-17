@@ -1,11 +1,11 @@
 var mysqlRepository = require('mysql');
 
 var pool = mysqlRepository.createPool({
-    host: "localhost",
-    user: "root",
-    password: "Root@123",
-    database: 'test',
-    port: 3306
+    host: "192.168.0.11",
+    user: "ydf",
+    password: "Yiduifu@1",
+    database: 'spider_db',
+    port: 3311
 });
 
 var connection = function (sql, callbackFn) {
@@ -36,18 +36,11 @@ repository.save = function (table, columns) {
     valueSql = '(' + valueSql.substring(1) + ')';
 
     var sql = insertSql + columnSql + ' values ' + valueSql;
-    console.log(sql);
 
-    var obj = {};
     var callbackFn = function (err, val, fields) {
-        obj.err = err;
-        obj.val = val;
-        obj.fields = fields;
-        console.log(obj);
         if (err) throw err;
     };
     connection(sql, callbackFn);
-    return obj;
 };
 
 module.exports = repository;
